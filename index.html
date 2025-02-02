@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="keyboard"></div>
+    <script>
+        let keyboardContainer = document.querySelector('.keyboard');
+        let keys = "1234567890qwertyuiopasdfghjklzxcvbnm".split("");
+        keys.forEach((key,index) => {
+            let keyDiv = document.createElement("div");
+            keyDiv.classList.add("key");
+
+            let keyElement = document.createElement("i");
+            keyElement.setAttribute("data-key", key);
+            keyElement.innerText = key.toUpperCase();
+            keyDiv.appendChild(keyElement);
+            keyboardContainer.appendChild(keyDiv);
+
+// add line breaks after specific keys
+if (key === "0" || key === "p" || key === "l")
+{
+    let lineBreak = document.createElement("div");
+    lineBreak.classList.add('break');
+    keyboardContainer.appendChild(lineBreak);
+}
+
+        })
+
+// add active class while key press
+document.addEventListener("keydown", (event) => {
+    let keyElement = document.querySelector(`.key
+    i[data-key="${event.key.toLocaleLowerCase()}"]
+    `);
+    if (keyElement) keyElement.parentElement.
+    classList.add("active");
+})
+
+// remove active class on keyup
+document.addEventListener("keyup", (event) => {
+    let keyElement = document.querySelector(`.key
+    i[data-key="${event.key.toLocaleLowerCase()}"]
+    `);
+    if (keyElement) keyElement.parentElement.
+    classList.remove("active");
+})
+
+    </script>
+
+</body>
+</html>
